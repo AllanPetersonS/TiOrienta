@@ -55,8 +55,13 @@ const style = StyleSheet.create({
     backgroundColor: 'black',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderRadius: 20
+    borderRadius: 20,
+    maxHeight:50,
+    marginTop:20,
+    width:'100%'
+    
   }
+  
 })
   
 

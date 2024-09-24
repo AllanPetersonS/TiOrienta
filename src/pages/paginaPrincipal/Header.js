@@ -5,25 +5,28 @@ import BarraPesquisa from './BarraPesquisa';
 
 function Header(){
     return(
-        <View style = {style.containerBack}>
-            <View style = {style.container}>
-                <View style = {style.Procurar}>
-
-                    
+        <View style ={style.fundo}>
+            <View style = {style.containerBack}>   
+                <View style = {style.container}>  
+                    </View>
                 </View>
-            </View>
-        </View>    
+            </View>    
     );
 }
 
 
 
 const style = StyleSheet.create({
+    fundo:{
+        backgroundColor:'#E6F0FF',
+        flex:1
+    },
+    
     container:{
         backgroundColor: '#005EEB',
         alignItems: 'center',
         paddingTop: 30 ,
-        paddingBottom: 20,
+        paddingBottom: 0,
         height: 100,
         justifyContent: 'flex-start',
         width: '100%',
