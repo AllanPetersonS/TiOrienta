@@ -1,5 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet, 
+Text,
+View, 
+TextInput, 
+ScrollView, 
+SafeAreaView,
+Keyboard } from 'react-native';
 import{Ionicons} from 'react-native-vector-icons';
 
 
@@ -8,18 +14,22 @@ import axios from 'axios';
 
 
 function BarraPesquisa(){
- const [searcWord, setSearchWord] = useState('')
- const escolha = route.params.escolha;
- const link = `api.giphy.com/v1${escolha}/search`;//colocar aqui o caminho da api
+ 
+ 
+ const link = "https://jsonplaceholder.typicode.com/posts"; //colocar aqui o caminho da api
  const [text, setText] = useState("")
 
  const [data, setData] = useState([])
 
- const solicitar = async() =>{
+ const solicitar = async(text) =>{
   Keyboard.dismiss()
   
   try{
-    const resultados = axios.get 
+    const resultados = await axios.get(link,{
+      params:{
+        userId: text,
+      }
+    }) 
   } catch (e) {
 
   }
@@ -31,24 +41,24 @@ function BarraPesquisa(){
     <SafeAreaView style = {style.view}>
       <View style = {style.cabecalho}>
         <Ionicons
-        name = 'chevron-back'
-        size = {40}
-        color = 'white'
-        onPress = {() => {}}
+
         
         />
         <StatusBar barStyle = "light-content"/>
-        <TextInput placeholder='Selecionar Destino' style = {style.input}
-        onChangeText={setSearchWord}
+        <TextInput placeholder='Selecionar Destino'
+        style = {style.input}
         autoCorrect = {false}
-        />
+        autoCapitalize ='none'
+        value = {text}
+        onChangeText ={(value) => setText(value)}
+        /> 
 
        
         <Ionicons
           name = 'search'
           size = {40}
           color = 'white'
-          onPress = {() => {}}
+          onPress = {() => {solicitar(text)}}
         />
       </View>  
     </SafeAreaView>
@@ -71,7 +81,7 @@ const style = StyleSheet.create({
     fontSize:18,
     paddingLeft:10,
     paddingRight:10,
-    
+    marginLeft:10
   },
   view:{
     marginTop: StatusBar.currentHeight
