@@ -8,6 +8,7 @@ function Header(){
         <View style ={style.fundo}>
             <View style = {style.containerBack}>   
                 <View style = {style.container}>  
+                    <BarraPesquisa/>
                     </View>
                 </View>
             </View>    
