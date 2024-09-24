@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Wellcome from '../pages/Wellcome';
 import SingIn from '../pages/SingIn';
 
+
 const Stack = createNativeStackNavigator();
 
 export default function Routes(){
