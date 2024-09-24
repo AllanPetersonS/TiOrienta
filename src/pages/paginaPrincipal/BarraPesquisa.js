@@ -1,16 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet, 
+  Text, 
+  View, 
+  TextInput, 
+  ScrollView, 
+  SafeAreaView,
+  Keyboard 
+} from 'react-native';
 import{Ionicons} from 'react-native-vector-icons';
-import MOCK_DATA from './MOCK_DATA.json';
 import { useState } from 'react';
+import axios from 'axios';
 
 
 function BarraPesquisa(){
- const [searcWord, setSearchWord] = useState('')
- 
+ const link = `api.giphy.com/v1${escolha}/search`;
+ const  [data, setData] = useState([])
+ const solicitar = async() => {
+    Keyboard.dismiss()
+
+  try {
+    const resultados = axios.get(link, {
+      params:(
+        api_ke
+      )
+    })
+  } catch(e) {
+
+  } 
+
+ }
  
   return(
-    <SafeAreaView>
+    <SafeAreaView style = {style.view}>
       <View style = {style.cabecalho}>
         <Ionicons
         name = 'chevron-back'
@@ -20,24 +41,12 @@ function BarraPesquisa(){
         
         />
         <StatusBar barStyle = "light-content"/>
-        <TextInput placeholder='Selecionar Destino'
+        <TextInput placeholder='Selecionar Destino' style = {style.input}
         onChangeText={setSearchWord}
         autoCorrect = {false}
         />
 
-        <ScrollView>
-        {MOCK_DATA.filter((val) => {
-          if(searcWord === ""){
-            return val
-          }
-          else if(val.first_name.toLowerCase.includes(searcWord.toLowerCase())){
-            return val
-          }
-          
-        }).map((item, index) => (
-            <Text key={index}>{item.first_name} </Text>
-        ))}
-        </ScrollView>
+       
         <Ionicons
           name = 'search'
           size = {40}
@@ -50,16 +59,25 @@ function BarraPesquisa(){
 const style = StyleSheet.create({
 
   cabecalho:{
-    marginTop: StatusBar.currentHeight,
-    marginBottom:100,
-    backgroundColor: 'black',
+    
+    marginBottom:10,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderRadius: 20,
     maxHeight:50,
     marginTop:20,
-    width:'100%'
+    width:'100%',
+  },
+  input:{
+    flex:1,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    fontSize:18,
+    paddingLeft:10,
+    paddingRight:10,
     
+  },
+  view:{
+    marginTop: StatusBar.currentHeight
   }
   
 })
