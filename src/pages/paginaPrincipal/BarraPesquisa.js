@@ -1,34 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, 
-  Text, 
-  View, 
-  TextInput, 
-  ScrollView, 
-  SafeAreaView,
-  Keyboard 
-} from 'react-native';
+import { StyleSheet, Text, View, TextInput, ScrollView, SafeAreaView } from 'react-native';
 import{Ionicons} from 'react-native-vector-icons';
+
+
 import { useState } from 'react';
 import axios from 'axios';
 
 
 function BarraPesquisa(){
- const link = `api.giphy.com/v1${escolha}/search`;
- const  [data, setData] = useState([])
- const solicitar = async() => {
-    Keyboard.dismiss()
+ const [searcWord, setSearchWord] = useState('')
+ const escolha = route.params.escolha;
+ const link = `api.giphy.com/v1${escolha}/search`;//colocar aqui o caminho da api
+ const [text, setText] = useState("")
 
-  try {
-    const resultados = axios.get(link, {
-      params:(
-        api_ke
-      )
-    })
-  } catch(e) {
+ const [data, setData] = useState([])
 
-  } 
+ const solicitar = async() =>{
+  Keyboard.dismiss()
+  
+  try{
+    const resultados = axios.get 
+  } catch (e) {
 
- }
+  }
+
+
+}
  
   return(
     <SafeAreaView style = {style.view}>
