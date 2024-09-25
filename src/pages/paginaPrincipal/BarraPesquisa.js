@@ -6,21 +6,24 @@ TextInput,
 ScrollView, 
 SafeAreaView,
 Keyboard } from 'react-native';
-import{Ionicons} from 'react-native-vector-icons/Ionicons';
-import Cabecalho from './Cabecalho';
+import{Ionicons} from 'react-native-vector-icons';
+
+
 import { useState } from 'react';
 import axios from 'axios';
 
+
 function BarraPesquisa(){
+ 
  
  const link = "https://jsonplaceholder.typicode.com/posts"; //colocar aqui o caminho da api
  const [text, setText] = useState("")
- const [loading, setLoading] = useState(false);
+
  const [data, setData] = useState([])
 
  const solicitar = async(text) =>{
   Keyboard.dismiss()
-  setLoading(true)
+  
   try{
     const resultados = await axios.get(link,{
       params:{
@@ -31,8 +34,6 @@ function BarraPesquisa(){
     setData(resultados.data)
   } catch (err) {
     console.log(err)
-  }finally{
-    setLoading(false);
   }
 
 
@@ -40,16 +41,28 @@ function BarraPesquisa(){
  
   return(
     <SafeAreaView style = {style.view}>
-      <StatusBar barStyle = "light-content"/>
       <View style = {style.cabecalho}>
+        <Ionicons
+
         
-
-        <Cabecalho
-        text = {text}
-        setText = {setText}
-        solicitar = {solicitar}
         />
+        <StatusBar barStyle = "light-content"/>
+        <TextInput placeholder='Selecionar Destino'
+        style = {style.input}
+        autoCorrect = {false}
+        autoCapitalize ='none'
+        value = {text}
+        onChangeText ={(value) => setText(value)}
+        onSubmitEditing={() => {solicitar(text)}}
+        /> 
 
+       
+        <Ionicons
+          name = 'search'
+          size = {40}
+          color = 'white'
+          onPress = {() => {solicitar(text)}}
+        />
       </View>  
     </SafeAreaView>
 )}
