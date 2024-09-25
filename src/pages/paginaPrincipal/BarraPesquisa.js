@@ -27,11 +27,13 @@ function BarraPesquisa(){
   try{
     const resultados = await axios.get(link,{
       params:{
-        userId: text,
+        id: text
       }
     }) 
-  } catch (e) {
-
+    console.log(resultados.data)
+    setData(resultados.data)
+  } catch (err) {
+    console.log(err)
   }
 
 
@@ -51,6 +53,7 @@ function BarraPesquisa(){
         autoCapitalize ='none'
         value = {text}
         onChangeText ={(value) => setText(value)}
+        onSubmitEditing={() => {solicitar(text)}}
         /> 
 
        
