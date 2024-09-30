@@ -1,20 +1,68 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import BarraPesquisa from './BarraPesquisa';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
+import Icones from './Icones';
+import Onibus from './Onibus';
+import Feedback from './Feedback';
+import COP30 from './COP30';
 
-function Header(){
-    return(
-        <View style ={style.fundo}>
-            <View style = {style.containerBack}>   
-                <View style = {style.container}>  
-                    <BarraPesquisa/>
-                    </View>
-                </View>
-            </View>    
+const Stack = createStackNavigator();
+
+export default function App() {
+    return (
+
+            <Stack.Navigator>
+                <Stack.Screen 
+                name="Home" 
+                component={Header}
+                options={{headerShown: false}}
+                />
+
+                <Stack.Screen 
+                name="Onibus" 
+                component={Onibus}
+                options={{headerShown: false}}
+                />
+
+                <Stack.Screen
+                 name="Feedback"
+                component={Feedback}
+                options={{headerShown: false}}
+                  />
+
+                <Stack.Screen 
+                name="COP30"
+                component={COP30} 
+                options={{headerShown: false}}
+                />
+            </Stack.Navigator>
+
     );
 }
 
+function Header(){
+    return(
+        
+        <View style ={style.fundo}>
+            <View style = {style.containerBack}>  
+                <View style = {style.container}>  
+                    <BarraPesquisa/>
+                    </View>
+                <Icones/> 
+                </View>
+            </View>   
+             
+    );
+}
+
+
+
+
+
+        
 
 
 const style = StyleSheet.create({
@@ -49,4 +97,3 @@ const style = StyleSheet.create({
         color: 'white'
     }
 })
-export default Header;
