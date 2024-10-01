@@ -1,9 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 
+import {useNavigation} from '@react-navigation/native'
+
 import * as Animatable from 'react-native-animatable';
 
 export default function SingIn(){
+    const navigation = useNavigation();
+
     return (
 
         <View style={styles.container}>
@@ -30,7 +34,10 @@ export default function SingIn(){
                     <Text style={styles.buttonText}>Acessar</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.buttonRegister}>
+                <TouchableOpacity 
+                    style={styles.buttonRegister}
+                    onPress={ () => navigation.navigate('SingUp')}
+                >
                     <Text style={styles.registerText}>Não possui uma conta? Cadastre-se</Text>
                 </TouchableOpacity>
 
@@ -45,7 +52,7 @@ export default function SingIn(){
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: '#38a69d'
+        backgroundColor: '#005EEB'
     },
     containerHeader:{
         marginTop: '14%',
@@ -63,7 +70,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
         paddingStart: '5%',
-        paddingEnd: "5%"
+        paddingEnd: '5%'
     },
     title:{
         fontSize:20,
@@ -76,7 +83,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     button:{
-        backgroundColor: "#38a69d",
+        backgroundColor: "#005EEB",
         width: "100%",
         borderRadius: 4,
         paddingVertical: 8,
