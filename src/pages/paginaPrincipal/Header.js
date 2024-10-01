@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import BarraPesquisa from './BarraPesquisa';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
 
 import Icones from './Icones';
 import Onibus from './Onibus';
@@ -24,19 +23,19 @@ export default function App() {
                 <Stack.Screen 
                 name="Onibus" 
                 component={Onibus}
-                options={{headerShown: false}}
+                
                 />
 
                 <Stack.Screen
                  name="Feedback"
                 component={Feedback}
-                options={{headerShown: false}}
+                
                   />
 
                 <Stack.Screen 
                 name="COP30"
                 component={COP30} 
-                options={{headerShown: false}}
+                
                 />
             </Stack.Navigator>
 

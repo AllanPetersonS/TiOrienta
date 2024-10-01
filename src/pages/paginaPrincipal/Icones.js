@@ -5,9 +5,7 @@ import{Ionicons, MaterialCommunityIcons, FontAwesome} from 'react-native-vector-
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 
-import Onibus from './Onibus';
-import Feedback from './Feedback';
-import COP30 from './COP30';
+
 
 const stack = createStackNavigator()
 
