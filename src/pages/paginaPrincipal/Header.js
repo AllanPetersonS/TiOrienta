@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import BarraPesquisa from './BarraPesquisa';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Icones from './Icones';
 import Onibus from './Onibus';
 import Feedback from './Feedback';
 import COP30 from './COP30';
+import RetornoPesquisa from './RetornoPesquisa';
+import BarraPesquisa from './BarraPesquisa';
 
 const Stack = createStackNavigator();
 
@@ -48,10 +49,12 @@ function Header(){
         <View style ={style.fundo}>
             <View style = {style.containerBack}>  
                 <View style = {style.container}>  
-                    <BarraPesquisa/>
+                <BarraPesquisa/>
+                    
                     </View>
                 <Icones/> 
                 </View>
+                <RetornoPesquisa/>
             </View>   
              
     );
