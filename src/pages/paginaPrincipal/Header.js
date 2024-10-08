@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -8,6 +8,7 @@ import Feedback from './Feedback';
 import COP30 from './COP30';
 import RetornoPesquisa from './RetornoPesquisa';
 import BarraPesquisa from './BarraPesquisa';
+import index from '../../routes/index'
 
 const Stack = createStackNavigator();
 
@@ -22,9 +23,9 @@ export default function App() {
                 />
 
                 <Stack.Screen 
-                name="Onibus" 
-                component={Onibus}
-                
+                name="index" 
+                component={index}
+                options={{headerShown: false}}
                 />
 
                 <Stack.Screen
@@ -44,17 +45,21 @@ export default function App() {
 }
 
 function Header(){
+
+    const [Destino, setDestino] = useState({}); 
+
+
     return(
         
         <View style ={style.fundo}>
             <View style = {style.containerBack}>  
                 <View style = {style.container}>  
-                <BarraPesquisa/>
-                    
+                <BarraPesquisa setDestino={setDestino} /> 
+                                 
                     </View>
                 <Icones/> 
                 </View>
-                <RetornoPesquisa/>
+                <RetornoPesquisa Destino={Destino} />
             </View>   
              
     );

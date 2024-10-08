@@ -17,10 +17,10 @@ function Icones(){
         
             <SafeAreaView style ={style.icones}>
                 <Ionicons
-                name="bus"
+                name="person"
                 size={70}
                 color='black'
-                onPress={() => navigation.navigate("Onibus")}
+                onPress={() => navigation.navigate("index")}
                 style ={style.onibus}
                 />
             <MaterialCommunityIcons
